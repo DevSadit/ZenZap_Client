@@ -14,20 +14,25 @@ const Navbar = () => {
       <div className="flex-none">
         <ul className="menu menu-horizontal px-1">
           <li>
-            <div to="/">
+            <Link to="/">
               <div>Home</div>
-            </div>
+            </Link>
           </li>
 
           <li>
-            <div to="/login">
+            <Link>
               <div>All Blogs</div>
-            </div>
+            </Link>
           </li>
           <li>
-            <div to="/login">
+            <Link>
               <div>Featured Blogs</div>
-            </div>
+            </Link>
+          </li>
+          <li>
+            <Link to="/login">
+              <div>LogIn</div>
+            </Link>
           </li>
         </ul>
         <div className="dropdown dropdown-end z-50">

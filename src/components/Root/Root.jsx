@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import Home from "../pages/Home";
+import { Outlet } from "react-router-dom";
 
 const Root = () => {
   return (
@@ -10,7 +11,7 @@ const Root = () => {
         <Navbar></Navbar>
       </div>
       <div className="min-h-[calc(100vh-306px)]">
-        <Home></Home>
+        <Outlet></Outlet>
       </div>
       <div>
         <Footer></Footer>
