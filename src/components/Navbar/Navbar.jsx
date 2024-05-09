@@ -1,6 +1,9 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../Provider/AuthProvider";
 
 const Navbar = () => {
+  const { logOut, user } = useContext(AuthContext);
   return (
     <div className="navbar shadow-sm lg:px-44 bg-[#CAF4FF]">
       <div className="flex-1">
@@ -29,26 +32,30 @@ const Navbar = () => {
               <div>Featured Blogs</div>
             </Link>
           </li>
-          <li>
-            <Link to="/login">
-              <div>LogIn</div>
-            </Link>
-          </li>
+          {!user && (
+            <li>
+              <Link to="/login">
+                <div>LogIn</div>
+              </Link>
+            </li>
+          )}
         </ul>
         <div className="dropdown dropdown-end z-50">
-          <div
-            tabIndex={0}
-            role="button"
-            className="btn btn-ghost btn-circle avatar"
-          >
-            <div className="w-10 rounded-full" title="">
-              <img
-                referrerPolicy="no-referrer"
-                alt="User Profile Photo"
-                src=""
-              />
+          {user && (
+            <div
+              tabIndex={0}
+              role="button"
+              className="btn btn-ghost btn-circle avatar"
+            >
+              <div className="w-10 rounded-full" title="">
+                <img
+                  referrerPolicy="no-referrer"
+                  alt="User Profile Photo"
+                  src={user?.photoURL}
+                />
+              </div>
             </div>
-          </div>
+          )}
           <ul
             tabIndex={0}
             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
@@ -60,7 +67,12 @@ const Navbar = () => {
               <div>Wishlist</div>
             </li>
             <li className="mt-2">
-              <button className="bg-gray-200 block text-center">Logout</button>
+              <button
+                onClick={logOut}
+                className="bg-gray-200 block text-center"
+              >
+                Logout
+              </button>
             </li>
           </ul>
         </div>

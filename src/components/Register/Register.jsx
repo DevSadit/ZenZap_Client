@@ -1,6 +1,43 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
-
+import Swal from "sweetalert2";
+import { AuthContext } from "../Provider/AuthProvider";
 const Register = () => {
+      const { user, createUser, updateUserProfile, setUser } = useContext(AuthContext);
+    // const navigate = useNavigate();
+    const handleRegister= async (e)=>{
+        e.preventDefault();
+            const form = e.target;
+            const name = form.name.value;
+            const email = form.email.value;
+            const photo = form.photo.value;
+            const password = form.password.value;
+            console.log({ email, name, photo, password });
+        try {
+          // user signUp
+          const result = await createUser(email, password);
+          console.log(result);
+          await updateUserProfile(name, photo)
+          setUser({...user, photoURL: photo, displayName: name})
+        //   navigate("/");
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Your Created Account Succesfuly!",
+            showConfirmButton: true,
+            timer: 1500,
+          });
+        } catch (err) {
+          console.log(err);
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Your work has been saved",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+    }
   return (
     <div className="flex justify-center items-center min-h-[calc(100vh-306px)]">
       <div className="flex my-12 w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg  lg:max-w-4xl ">
@@ -18,7 +55,7 @@ const Register = () => {
 
             <span className="w-1/5 border-b dark:border-gray-400 lg:w-1/4"></span>
           </div>
-          <form>
+          <form onSubmit={handleRegister}>
             <div className="mt-4">
               <label
                 className="block mb-2 text-sm font-medium text-gray-600 "
