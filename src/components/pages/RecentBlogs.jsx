@@ -2,14 +2,14 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
 import RecBlog from "./RecBlog";
-import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const RecentBlogs = () => {
   const [blogs, setBlogs] = useState([]);
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/blogss`)
+      .get(`https://blog-website-rho-henna.vercel.app/blogss`)
       .then((res) => {
         setBlogs(res.data);
       })
@@ -34,6 +34,7 @@ const RecentBlogs = () => {
           <RecBlog key={blog._id} blog={blog}></RecBlog>
         ))}
       </div>
+      <Link to="/allblogs"><button className="btn text-white font-bold mt-10 px-7 py-3 bg-blue-600">All Blogs</button></Link>
     </div>
   );
 };

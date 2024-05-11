@@ -7,7 +7,7 @@ const Feedbacks = () => {
   const [feedbacks, setFeedback] = useState([]);
   useState(() => {
     axios
-      .get(`http://localhost:5000/testimonials`)
+      .get(`https://blog-website-rho-henna.vercel.app/testimonials`)
       .then((res) => {
         setFeedback(res.data);
       })

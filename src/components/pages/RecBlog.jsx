@@ -1,8 +1,9 @@
 import { FaArrowRight, FaBookOpen } from "react-icons/fa6";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const RecBlog = ({ blog }) => {
-  const { title, image, shortDescription, category } = blog;
+  const { title, image, shortDescription, category, _id } = blog;
   return (
     <div className="overflow-hidden h-[560px] bg-white mx-6 md:mx-0 rounded-lg shadow-lg dark:bg-gray-800">
       <img
@@ -29,9 +30,11 @@ const RecBlog = ({ blog }) => {
         <div className="flex items-center mt-4 text-gray-700 gap-x-3 dark:text-gray-200">
           <FaArrowRight className="text-gray-800" />
 
-          <button className="px-3 py-2 text-sm font-bold text-white uppercase transition-colors duration-300 transform bg-gray-800 rounded dark:bg-gray-700 hover:bg-gray-700 dark:hover:bg-gray-600 focus:outline-none focus:bg-gray-700 dark:focus:bg-gray-600">
-            Details
-          </button>
+          <Link to={`/blogDetails/${_id}`}>
+            <button className="px-3 py-2 text-sm font-bold text-white uppercase transition-colors duration-300 transform bg-gray-800 rounded dark:bg-gray-700 hover:bg-gray-700 dark:hover:bg-gray-600 focus:outline-none focus:bg-gray-700 dark:focus:bg-gray-600">
+              Details
+            </button>
+          </Link>
         </div>
 
         <div className="flex items-center mt-4 text-gray-700 gap-x-3 dark:text-gray-200">
