@@ -1,9 +1,10 @@
 import { FaArrowRight, FaBookOpen } from "react-icons/fa6";
+import { motion } from "framer-motion";
 
 const RecBlog = ({ blog }) => {
-      const { title, image, shortDescription, category } = blog;
+  const { title, image, shortDescription, category } = blog;
   return (
-    <div className="overflow-hidden h-[520px] bg-white mx-6 md:mx-0 rounded-lg shadow-lg dark:bg-gray-800">
+    <div className="overflow-hidden h-[560px] bg-white mx-6 md:mx-0 rounded-lg shadow-lg dark:bg-gray-800">
       <img
         className="object-cover object-center w-full h-56"
         src={image}

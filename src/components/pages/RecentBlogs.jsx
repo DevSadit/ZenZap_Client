@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
 import RecBlog from "./RecBlog";
+import { motion } from "framer-motion";
 
 const RecentBlogs = () => {
   const [blogs, setBlogs] = useState([]);
