@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import toast from "react-hot-toast";
 import axios from "axios";
@@ -8,22 +8,17 @@ import Comment from "./Comment";
 const BlogDetails = () => {
   const { user } = useContext(AuthContext);
   const blogData = useLoaderData();
-  const { title, image, shortDescription, longDescription, category, _id } =
-    blogData;
+  const {
+    title,
+    image,
+    shortDescription,
+    longDescription,
+    category,
+    _id,
+    authorEmail,
+  } = blogData;
   // getting comment data from the server
   const [comments, setComments] = useState([]);
-
-  // useEffect(() => {
-  //   axios
-  //     .get(`https://blog-website-rho-henna.vercel.app/comments/${_id}`)
-  //     .then((res) => {
-  //       setComments(res.data);
-  //     })
-  //     .catch((err) => {
-  //       console.error(err);
-  //     });
-  // }, [_id]);
-
   useEffect(() => {
     const fetchComments = async () => {
       try {
@@ -93,6 +88,14 @@ const BlogDetails = () => {
           <p>{longDescription}</p>
         </div>
       </div>
+      {/* section for update */}
+      {authorEmail === user?.email && (
+        <div>
+          <Link to={`/updateBlog/${_id}`}>
+            <button className="btn btn-info w-full">Update</button>
+          </Link>
+        </div>
+      )}
       {/* section for comments */}
       <div className="mt-10">
         <h1 className="font-bold text-4xl">{comments.length} Comments</h1>
