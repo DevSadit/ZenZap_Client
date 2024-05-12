@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 const TableRow = ({ blog }) => {
-  const { title, image, category } = blog;
+  const { title, _id, image, category } = blog;
   return (
     <tr>
       <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
@@ -41,7 +41,7 @@ const TableRow = ({ blog }) => {
         </button>
       </td>
       <td className="px-4 py-4 text-sm whitespace-nowrap">
-        <Link to="/updateBlog">
+        <Link to={`/updateBlog/${_id}`}>
           <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 pl-2 hover:text-yellow-500 focus:outline-none">
             <svg
               xmlns="http://www.w3.org/2000/svg"
