@@ -61,7 +61,14 @@ const Navbar = () => {
             className="menu menu-sm dropdown-content mt-3 z-[1] bg-gray-900 p-2 shadow rounded-box w-52"
           >
             <li>
-              <div>Add Blogs</div>
+              <Link to="/myblogs">
+                <div>My Blogs</div>
+              </Link>
+            </li>
+            <li>
+              <Link to="/addblogs">
+                <div>Add Blogs</div>
+              </Link>
             </li>
             <li>
               <div>Wishlist</div>

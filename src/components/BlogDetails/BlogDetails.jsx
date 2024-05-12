@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
-import Swal from "sweetalert2";
 import toast from "react-hot-toast";
 import axios from "axios";
 import Comment from "./Comment";
@@ -13,18 +12,33 @@ const BlogDetails = () => {
     blogData;
   // getting comment data from the server
   const [comments, setComments] = useState([]);
+
+  // useEffect(() => {
+  //   axios
+  //     .get(`https://blog-website-rho-henna.vercel.app/comments/${_id}`)
+  //     .then((res) => {
+  //       setComments(res.data);
+  //     })
+  //     .catch((err) => {
+  //       console.error(err);
+  //     });
+  // }, [_id]);
+
   useEffect(() => {
-    axios
-      .get(`http://localhost:5000/comments/${_id}`)
-      .then((res) => {
+    const fetchComments = async () => {
+      try {
+        const res = await axios.get(
+          `https://blog-website-rho-henna.vercel.app/comments/${_id}`
+        );
         setComments(res.data);
-      })
-      .catch((err) => {
+      } catch (err) {
         console.error(err);
-      });
+      }
+    };
+
+    fetchComments();
   }, [_id]);
 
-  // console.log(comments);
   //   handle the comment functionality
   const handleComment = (e) => {
     e.preventDefault();
@@ -46,7 +60,7 @@ const BlogDetails = () => {
     };
 
     // sending comment data to the server
-    fetch(`http://localhost:5000/comments`, {
+    fetch(`https://blog-website-rho-henna.vercel.app/comments`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
