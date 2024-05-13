@@ -63,7 +63,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/blogDetails/:id",
-        element: <BlogDetails></BlogDetails>,
+        element: (
+          <PrivateRoute>
+            <BlogDetails></BlogDetails>
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(
             `https://blog-website-rho-henna.vercel.app/blogss/${params.id}`

@@ -1,16 +1,19 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import TableRow from "./TableRow";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
 const MyBlogs = () => {
   const { user } = useContext(AuthContext);
   const [blogs, setBlogs] = useState([]);
+    const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch(`http://localhost:5000/blogsss/${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         setBlogs(data);
+        setLoading(false);
       });
   }, [user]);
 
@@ -58,13 +61,21 @@ const MyBlogs = () => {
                       >
                         Update
                       </th>
-
                     </tr>
                   </thead>
                   <tbody className="bg-white divide-y text-black divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
-                    {
-                        blogs.map(blog=> <TableRow key={blog._id} blog={blog}></TableRow>)
-                    }
+                    {loading ? (
+                      <SkeletonTheme
+                        baseColor="#202020"
+                        highlightColor="#2563EB"
+                      >
+                        <Skeleton count={3} baseColor="#D1D5DB"></Skeleton>
+                      </SkeletonTheme>
+                    ) : (
+                      blogs.map((blog) => (
+                        <TableRow key={blog._id} blog={blog}></TableRow>
+                      ))
+                    )}
                   </tbody>
                 </table>
               </div>

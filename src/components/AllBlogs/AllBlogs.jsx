@@ -2,16 +2,19 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import RecBlog from "../pages/RecBlog";
 import { Form } from "react-router-dom";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
 const AllBlogs = () => {
   const [blogs, setBlogs] = useState([]);
   const [search, setSearch] = useState("");
+  const [loading, setLoading] = useState(true);
   // console.log(search);
   useEffect(() => {
     axios
       .get(`https://blog-website-rho-henna.vercel.app/blogss`)
       .then((res) => {
         setBlogs(res.data);
+        setLoading(false);
       })
       .catch((err) => {
         console.error(err);
@@ -50,15 +53,19 @@ const AllBlogs = () => {
         </div>
       </div>
       <div className=" grid md:grid-cols-2 lg:grid-cols-3 container mx-auto gap-28 my-12">
-        {blogs
-          .filter((item) => {
-            return search.toLowerCase() === ""
-              ? item
-              : item.title.toLowerCase().includes(search);
-          })
-          .map((blog) => (
-            <RecBlog key={blog._id} blog={blog}></RecBlog>
-          ))}
+        {loading ? (
+          <SkeletonTheme baseColor="#202020" highlightColor="#2563EB">
+            <Skeleton count={3} baseColor="#D1D5DB"></Skeleton>
+          </SkeletonTheme>
+        ) : (
+          blogs
+            .filter((item) => {
+              return search.toLowerCase() === ""
+                ? item
+                : item.title.toLowerCase().includes(search);
+            })
+            .map((blog) => <RecBlog key={blog._id} blog={blog}></RecBlog>)
+        )}
       </div>
     </div>
   );

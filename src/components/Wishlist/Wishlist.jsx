@@ -1,16 +1,18 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import WishCard from "./WishCard";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
 const Wishlist = () => {
   const { user } = useContext(AuthContext);
   const [wishes, setWishes] = useState([]);
-
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     fetch(`http://localhost:5000/wishlist/${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         setWishes(data);
+        setLoading(false);
       });
   }, [user]);
   console.log(wishes);
@@ -23,14 +25,20 @@ const Wishlist = () => {
         </h4>
       </div>
       <div>
-        {wishes.map((wish) => (
-          <WishCard
-            key={wish._id}
-            wish={wish}
-            wishes={wishes}
-            setWishes={setWishes}
-          ></WishCard>
-        ))}
+        {loading ? (
+          <SkeletonTheme baseColor="#202020" highlightColor="#2563EB">
+            <Skeleton count={3} baseColor="#D1D5DB"></Skeleton>
+          </SkeletonTheme>
+        ) : (
+          wishes.map((wish) => (
+            <WishCard
+              key={wish._id}
+              wish={wish}
+              wishes={wishes}
+              setWishes={setWishes}
+            ></WishCard>
+          ))
+        )}
       </div>
     </div>
   );

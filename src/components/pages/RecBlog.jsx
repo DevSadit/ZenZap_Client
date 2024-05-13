@@ -6,7 +6,7 @@ import { AuthContext } from "../Provider/AuthProvider";
 import toast from "react-hot-toast";
 
 const RecBlog = ({ blog }) => {
-  const {user} = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const currentUserEmail = user?.email;
 
   // destructuring
@@ -32,25 +32,28 @@ const RecBlog = ({ blog }) => {
       authorName,
       currentUserEmail,
     };
-    console.log(wish);
-
+    // console.log(wish);
     // sendind blog data to the server
-    fetch(`http://localhost:5000/wishlist`, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(wish),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        if (data.insertedId) {
-          toast.success("Added to Wishlist");
-          // Navigate("/");
-        }
-        // this.myFormRef.reset();
-      });
+    if (user) {
+      fetch(`http://localhost:5000/wishlist`, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(wish),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          if (data.insertedId) {
+            toast.success("Added to Wishlist");
+            // Navigate("/");
+          }
+          // this.myFormRef.reset();
+        });
+    } else{
+      toast.error(`Login Please`)
+    }
   };
   return (
     <div className="overflow-hidden h-[560px] bg-white mx-6 md:mx-0 rounded-lg shadow-lg dark:bg-gray-800">

@@ -100,8 +100,7 @@ const BlogDetails = () => {
       {/* section for comments */}
       <div className="mt-10">
         <h1 className="font-bold text-4xl">{comments.length} Comments</h1>
-        {
-        user.email !== authorEmail && (
+        {user.email !== authorEmail && (
           <div className="flex gap-x-3 items-center mt-5">
             <div className="w-10 rounded-full">
               <img className="w-full rounded-full" src={user?.photoURL} />
@@ -117,8 +116,7 @@ const BlogDetails = () => {
               </form>
             </div>
           </div>
-        )
-        }
+        )}
         <hr
           className="my-7"
           style={{ backgroundColor: "black", height: "2px" }}
