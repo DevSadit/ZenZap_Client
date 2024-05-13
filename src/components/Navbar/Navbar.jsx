@@ -71,7 +71,9 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
-              <div>Wishlist</div>
+              <Link to="/wishlist">
+                <div>Wishlist</div>
+              </Link>
             </li>
             <li className="mt-2">
               <button
