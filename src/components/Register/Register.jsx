@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../Provider/AuthProvider";
+import toast from "react-hot-toast";
 const Register = () => {
   const { user, createUser, updateUserProfile, setUser, signInWithGoogle } =
     useContext(AuthContext);
@@ -14,8 +15,14 @@ const Register = () => {
     const photo = form.photo.value;
     const password = form.password.value;
     console.log({ email, name, photo, password });
+
     try {
-      // user signUp
+      if (
+        !/^(?=.*[A-Z])(?=.*[!@#$%^&*(),.?":{}|<>])(?=.*\d).{6,}$/.test(password)
+      ) {
+        toast.error(`Password doesn't meet the criteria`);
+      }
+      // Proceed if password is valid
       const result = await createUser(email, password);
       console.log(result);
       await updateUserProfile(name, photo);
@@ -25,19 +32,38 @@ const Register = () => {
         position: "center",
         icon: "success",
         title: "Your Created Account Succesfuly!",
-        showConfirmButton: true,
-        timer: 1500,
-      });
-    } catch (err) {
-      console.log(err);
-      Swal.fire({
-        position: "center",
-        icon: "success",
-        title: "Your work has been saved",
         showConfirmButton: false,
         timer: 1500,
       });
+    } 
+    catch (err) {
+      console.log(err);
     }
+
+    //////////////////////////////////////////////
+    // try {
+    //   const result = await createUser(email, password);
+    //   console.log(result);
+    //   await updateUserProfile(name, photo);
+    //   setUser({ ...user, photoURL: photo, displayName: name });
+    //   //   navigate("/");
+    //   Swal.fire({
+    //     position: "center",
+    //     icon: "success",
+    //     title: "Your Created Account Succesfuly!",
+    //     showConfirmButton: true,
+    //     timer: 1500,
+    //   });
+    // } catch (err) {
+    //   console.log(err);
+    //   Swal.fire({
+    //     position: "center",
+    //     icon: "success",
+    //     title: "Your work has been saved",
+    //     showConfirmButton: false,
+    //     timer: 1500,
+    //   });
+    // }
   };
   return (
     <div className="flex justify-center items-center min-h-[calc(100vh-306px)]">
