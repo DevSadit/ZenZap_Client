@@ -24,7 +24,12 @@ const Wishlist = () => {
       </div>
       <div>
         {wishes.map((wish) => (
-          <WishCard key={wish._id} wish={wish}></WishCard>
+          <WishCard
+            key={wish._id}
+            wish={wish}
+            wishes={wishes}
+            setWishes={setWishes}
+          ></WishCard>
         ))}
       </div>
     </div>

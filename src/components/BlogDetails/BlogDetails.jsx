@@ -100,21 +100,25 @@ const BlogDetails = () => {
       {/* section for comments */}
       <div className="mt-10">
         <h1 className="font-bold text-4xl">{comments.length} Comments</h1>
-        <div className="flex gap-x-3 items-center mt-5">
-          <div className="w-10 rounded-full">
-            <img className="w-full rounded-full" src={user?.photoURL} />
+        {
+        user.email !== authorEmail && (
+          <div className="flex gap-x-3 items-center mt-5">
+            <div className="w-10 rounded-full">
+              <img className="w-full rounded-full" src={user?.photoURL} />
+            </div>
+            <div className="w-full">
+              <form onSubmit={handleComment} className="flex items-center">
+                <textarea
+                  name="comment"
+                  className="p-3 w-full border rounded-lg border-black"
+                  placeholder="Your Comment"
+                ></textarea>
+                <button className="btn bg-gray-800 text-white">Comment</button>
+              </form>
+            </div>
           </div>
-          <div className="w-full">
-            <form onSubmit={handleComment} className="flex items-center">
-              <textarea
-                name="comment"
-                className="p-3 w-full border rounded-lg border-black"
-                placeholder="Your Comment"
-              ></textarea>
-              <button className="btn bg-gray-800 text-white">Comment</button>
-            </form>
-          </div>
-        </div>
+        )
+        }
         <hr
           className="my-7"
           style={{ backgroundColor: "black", height: "2px" }}
