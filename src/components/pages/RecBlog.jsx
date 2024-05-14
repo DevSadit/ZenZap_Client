@@ -38,7 +38,7 @@ const RecBlog = ({ blog }) => {
       console.log(wish);
 
       // sendind blog data to the server
-      fetch(`http://localhost:5000/wishlist`, {
+      fetch(`https://blog-website-rho-henna.vercel.app/wishlist`, {
         method: "POST",
         headers: {
           "content-type": "application/json",

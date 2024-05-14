@@ -20,12 +20,12 @@ const WishCard = ({ wish, wishes, setWishes }) => {
     }).then((result) => {
       if (result.isConfirmed) {
         // delete card
-        fetch(`http://localhost:5000/wishlists/${blogId}`, {
+        fetch(`https://blog-website-rho-henna.vercel.app/wishlists/${blogId}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
           .then((data) => {
-            // http://localhost:5000/
+            // https://blog-website-rho-henna.vercel.app/
             console.log(data);
             if (data.deletedCount > 0) {
               Swal.fire({
