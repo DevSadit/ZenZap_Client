@@ -1,6 +1,6 @@
 import React from "react";
 import toast from "react-hot-toast";
-
+import { motion } from "framer-motion";
 const NewsLetter = () => {
   const formRef = React.createRef();
   const handleSubscribe = async (e) => {

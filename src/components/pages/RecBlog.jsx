@@ -22,37 +22,41 @@ const RecBlog = ({ blog }) => {
 
   // handle WishList
   const handleWishlist = (_id) => {
-    // console.log(_id);
     const blogId = _id;
-    const wish = {
-      title,
-      image,
-      shortDescription,
-      category,
-      blogId,
-      authorEmail,
-      authorName,
-      currentUserEmail,
-    };
-    console.log(wish);
 
-    // sendind blog data to the server
-    fetch(`http://localhost:5000/wishlist`, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(wish),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        if (data.insertedId) {
-          toast.success("Added to Wishlist");
-          // Navigate("/");
-        }
-        // this.myFormRef.reset();
-      });
+    if (user) {
+      const wish = {
+        title,
+        image,
+        shortDescription,
+        category,
+        blogId,
+        authorEmail,
+        authorName,
+        currentUserEmail,
+      };
+      console.log(wish);
+
+      // sendind blog data to the server
+      fetch(`http://localhost:5000/wishlist`, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(wish),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          if (data.insertedId) {
+            toast.success("Added to Wishlist");
+            // Navigate("/");
+          }
+          // this.myFormRef.reset();
+        });
+    } else {
+      toast.error("Login to Add Blogs in Wishlist");
+    }
   };
   return (
     <div className="overflow-hidden h-[560px] bg-white mx-6 md:mx-0 rounded-lg shadow-lg dark:bg-gray-800">

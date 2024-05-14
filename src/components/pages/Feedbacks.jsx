@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import Marquee from "react-fast-marquee";
 import SingleFeedback from "./SingleFeedback";
-
+import { motion } from "framer-motion";
 const Feedbacks = () => {
   const [feedbacks, setFeedback] = useState([]);
   useState(() => {
@@ -18,8 +18,8 @@ const Feedbacks = () => {
   console.log(feedbacks);
   return (
     <div>
-      <h1 className="font-bold text-4xl text-center my-12 border border-b-2 border-t-2 text-gray-800 py-4">
-        Feedback Spotlight
+      <h1 className="font-bold text-4xl text-center my-12 border-t-2 text-white py-4 bg-gray-800">
+        Feedbacks Spotligh
       </h1>
       {/* this div is for map */}
       <div>

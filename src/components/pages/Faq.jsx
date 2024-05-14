@@ -2,7 +2,7 @@ import faqImg from "../../assets/faq.jpg";
 const Faq = () => {
   return (
     <div className="my-12">
-      <h1 className="font-bold text-4xl text-center my-12 border border-b-2 border-t-2 text-gray-800 py-4">
+      <h1 className="font-bold text-4xl text-center my-12 bg-gray-800 border-t-2 text-white py-4">
         Frequently Asked Questions
       </h1>
       <div className="flex mx-auto container flex-col lg:flex-row items-center justify-between">

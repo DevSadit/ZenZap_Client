@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
 import RecBlog from "./RecBlog";
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
@@ -22,12 +23,30 @@ const RecentBlogs = () => {
   return (
     <div className="text-center space-y-9">
       <div className="lg:space-y-3">
-        <h1 className="font-bold text-4xl">Our Recent Blog Posts</h1>
-        <p className="mx-5 md:my-0 mt-3">
+        <motion.h1
+          initial={{ x: -1500 }}
+          animate={{ x: 0 }}
+          transition={{
+            duration: "3",
+            delay: "0.9",
+          }}
+          className="font-bold mb-3 text-5xl"
+        >
+          Our Recent Blog Posts
+        </motion.h1>
+        <motion.p
+          initial={{ x: 1500 }}
+          animate={{ x: 0 }}
+          transition={{
+            duration: "3",
+            delay: "1",
+          }}
+          className="mx-5 md:my-0 mt-3"
+        >
           Explore our vibrant collection of recent blog posts, where we share
           insights, stories, and ideas on a <br /> variety of topics. Stay
           up-to-date with our latest musings and join the conversation!
-        </p>
+        </motion.p>
       </div>
 
       {/* this div is for map the cart */}
