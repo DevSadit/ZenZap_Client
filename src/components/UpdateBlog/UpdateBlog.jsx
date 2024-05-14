@@ -37,7 +37,7 @@ const UpdateBlog = () => {
     console.log(updatedData);
 
     // sending updated data to the server
-        fetch(`http://localhost:5000/blogss/${_id}`, {
+        fetch(`https://blog-website-rho-henna.vercel.app/blogss/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

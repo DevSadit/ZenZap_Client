@@ -23,7 +23,7 @@ const RecentBlogs = () => {
     <div className="text-center space-y-9">
       <div className="lg:space-y-3">
         <h1 className="font-bold text-4xl">Our Recent Blog Posts</h1>
-        <p>
+        <p className="mx-5 md:my-0 mt-3">
           Explore our vibrant collection of recent blog posts, where we share
           insights, stories, and ideas on a <br /> variety of topics. Stay
           up-to-date with our latest musings and join the conversation!

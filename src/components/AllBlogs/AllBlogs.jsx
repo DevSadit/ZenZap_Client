@@ -22,13 +22,15 @@ const AllBlogs = () => {
   }, []);
   return (
     <div>
-      <div className="my-3 container mx-auto flex justify-between items-center border-b border-gray-800 pb-2">
+      <div className="my-3 px-2 container mx-auto flex justify-between items-center border-b border-gray-800 pb-2">
         <div className="text-left">
           <h1 className="font-bold text-2xl">The Blogosphere</h1>
           <h4 className="text-blue-600 font-semibold text-4xl ">
             Our Complete Collection
           </h4>
         </div>
+
+        {/* inp box */}
         <div className="relative mt-4 md:mt-0">
           <span className="absolute inset-y-0 left-0 flex items-center pl-3">
             <svg

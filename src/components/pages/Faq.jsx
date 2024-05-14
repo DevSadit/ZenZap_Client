@@ -92,7 +92,7 @@ const Faq = () => {
               </p>
             </div>
           </div>
-          <div className="collapse collapse-arrow join-item border-b-2 border-gray-800">
+          <div className="collapse collapse-arrow join-item ">
             <input type="radio" name="my-accordion-4" defaultChecked />
             <div className="collapse-title text-xl font-medium">
               What is your privacy policy?
@@ -110,7 +110,7 @@ const Faq = () => {
             </div>
           </div>
         </div>
-        <div className="w-4/12">
+        <div className="lg:w-4/12 w-72 md:w-96">
           <img className="w-full rounded-3xl" src={faqImg} />
         </div>
       </div>

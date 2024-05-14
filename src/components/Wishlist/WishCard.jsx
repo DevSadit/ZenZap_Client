@@ -2,10 +2,13 @@ import { FaTrash } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
+// ekane (wish) er vitor main data gola ase
 const WishCard = ({ wish, wishes, setWishes }) => {
-  const { title, _id, image, shortDescription, category, authorName } = wish;
+  // destructuring the wish.
+  const { title, _id, blogId, image, shortDescription, category, authorName } = wish;
 
-  const handleDeleteWish = (_id) => {
+  const handleDeleteWish = (blogId) => {
+    console.log(blogId);
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -17,11 +20,12 @@ const WishCard = ({ wish, wishes, setWishes }) => {
     }).then((result) => {
       if (result.isConfirmed) {
         // delete card
-        fetch(`http://localhost:5000/wishlists/${_id}`, {
+        fetch(`http://localhost:5000/wishlists/${blogId}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
           .then((data) => {
+            // http://localhost:5000/
             console.log(data);
             if (data.deletedCount > 0) {
               Swal.fire({
@@ -29,8 +33,10 @@ const WishCard = ({ wish, wishes, setWishes }) => {
                 text: "Your file has been deleted succesfuly.",
                 icon: "success",
               });
+
+              // now reset the state to update update the ui
               const remaining = wishes.filter((wish) => {
-                return wish._id !== _id;
+                return wish.blogId !== blogId;
               });
               console.log(remaining);
               setWishes([...remaining]);
@@ -51,7 +57,7 @@ const WishCard = ({ wish, wishes, setWishes }) => {
         <p className="leading-relaxed text-black">{shortDescription}</p>
         <p className="text-gray-400 italic">author: {authorName}</p>
         <Link
-          to={`/blogDetails/${_id}`}
+          to={`/blogDetails/${blogId}`}
           className="text-indigo-600 inline-flex items-center mt-4"
         >
           Read Now
@@ -68,7 +74,7 @@ const WishCard = ({ wish, wishes, setWishes }) => {
       <div className="">
         <FaTrash
           onClick={() => {
-            handleDeleteWish(_id);
+            handleDeleteWish(blogId);
           }}
           className="w-7 h-7"
         />

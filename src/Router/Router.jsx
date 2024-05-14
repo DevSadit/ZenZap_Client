@@ -59,7 +59,7 @@ const router = createBrowserRouter([
         path: "/updateBlog/:id",
         element: <UpdateBlog></UpdateBlog>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/blogss/${params.id}`),
+          fetch(`https://blog-website-rho-henna.vercel.app/blogss/${params.id}`),
       },
       {
         path: "/blogDetails/:id",

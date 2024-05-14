@@ -33,7 +33,7 @@ const AddBlog = () => {
 
 
         // sendind blog data to the server
-            fetch(`http://localhost:5000/blogss`, {
+            fetch(`https://blog-website-rho-henna.vercel.app/blogss`, {
               method: "POST",
               headers: {
                 "content-type": "application/json",
@@ -51,14 +51,14 @@ const AddBlog = () => {
               });
     }
     return (
-      <div className="container mx-auto">
+      <div className="container md:px-0 px-3 mx-auto">
         <div className="text-left border-b border-gray-800">
           <h1 className="font-bold text-2xl">Add Blog</h1>
           <h4 className="text-blue-600 font-semibold text-4xl ">
             Showcase Your Writting Skill
           </h4>
         </div>
-        <section className="max-w-4xl my-12 p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800">
+        <section className="max-w-4xl my-12 p-6 mx-auto bg-white rounded-md shadow-md shadow-[#749df5] dark:bg-gray-800">
           {/* <h2 className="text-lg font-semibold text-gray-700 capitalize dark:text-white">
           Post Blogs
         </h2> */}

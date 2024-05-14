@@ -8,14 +8,14 @@ const Wishlist = () => {
   const [wishes, setWishes] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    fetch(`http://localhost:5000/wishlist/${user?.email}`)
+    fetch(`https://blog-website-rho-henna.vercel.app/wishlist/${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         setWishes(data);
         setLoading(false);
       });
   }, [user]);
-  console.log(wishes);
+  // console.log(wishes);
   return (
     <div className="container text-gray-800 mx-auto">
       <div className="text-left border-b border-gray-800 pb-4">
@@ -32,8 +32,8 @@ const Wishlist = () => {
         ) : (
           wishes.map((wish) => (
             <WishCard
-              key={wish._id}
               wish={wish}
+              key={wish._id}
               wishes={wishes}
               setWishes={setWishes}
             ></WishCard>

@@ -16,12 +16,13 @@ const Navbar = () => {
       </div>
       <div className="flex-none">
         <ul className="menu menu-horizontal px-1">
-          <li>
-            <Link to="/">
-              <div>Home</div>
-            </Link>
-          </li>
-
+          {user && (
+            <li>
+              <Link to="/">
+                <div>Home</div>
+              </Link>
+            </li>
+          )}
           <li>
             <Link to="/allblogs">
               <div>All Blogs</div>
@@ -40,12 +41,12 @@ const Navbar = () => {
             </li>
           )}
         </ul>
-        <div className="dropdown dropdown-end z-50">
+        <div className="dropdown  dropdown-end z-50">
           {user && (
             <div
               tabIndex={0}
               role="button"
-              className="btn btn-ghost btn-circle avatar"
+              className="btn w-8 lg:w-10 btn-ghost btn-circle avatar"
             >
               <div className="w-10 rounded-full" title="">
                 <img

@@ -9,7 +9,7 @@ const FeaturedBlogs = () => {
   useEffect(() => {
     const fetchBlogData = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/top-posts`);
+        const res = await axios.get(`https://blog-website-rho-henna.vercel.app/top-posts`);
         setBlogDatas(res.data);
       } catch (err) {
         console.error(err);
@@ -19,7 +19,7 @@ const FeaturedBlogs = () => {
     fetchBlogData();
   }, []);
   return (
-    <div className="overflow-x-auto container mx-auto">
+    <div className="overflow-x-auto px-2 container mx-auto">
       <div className="text-left mb-4 border-b border-gray-800 pb-2 mb">
         <h1 className="font-bold  text-xl">Popular Posts</h1>
         <h4 className="text-blue-600 font-semibold text-4xl ">

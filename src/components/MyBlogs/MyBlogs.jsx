@@ -9,7 +9,7 @@ const MyBlogs = () => {
     const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/blogsss/${user?.email}`)
+    fetch(`https://blog-website-rho-henna.vercel.app/blogsss/${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         setBlogs(data);
@@ -18,7 +18,7 @@ const MyBlogs = () => {
   }, [user]);
 
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto px-4 md:px-0">
       <div className="text-left pb-3 border-b border-gray-800">
         <h1 className="font-bold text-2xl">{user?.displayName}'s Blog</h1>
         <h4 className="text-blue-600 font-semibold text-4xl ">
