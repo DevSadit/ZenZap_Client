@@ -14,7 +14,7 @@ const Hero = ({ img, txt, p }) => {
             <h1 className="text-3xl md:text-4xl font-semibold text-white lg:text-5xl">
               {txt}
             </h1>
-            <p className="md:w-1/2 px-10 md:px-0 text-gray-200 mt-4 mx-auto">{p}</p>
+            <p className="md:w-1/2 hidden md:block md:px-0 text-gray-200 mt-4 mx-auto">{p}</p>
             <br />
             <Link
               to="/allblogs"
