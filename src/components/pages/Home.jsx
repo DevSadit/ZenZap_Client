@@ -25,10 +25,10 @@ const Home = () => {
       <Slider></Slider>
       <RecentBlogs></RecentBlogs>
       <Feedbacks></Feedbacks>
+      <View></View>
       <AbouUs></AbouUs>
       <Faq></Faq>
       <NewsLetter></NewsLetter>
-      <View></View>
     </>
   );
 };

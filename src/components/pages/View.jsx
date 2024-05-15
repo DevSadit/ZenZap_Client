@@ -16,7 +16,7 @@ import img10 from "../../assets/img-box/h4.jpg";
 import img11 from "../../assets/img-box/h5.jpg";
 const Picture = () => {
   return (
-    <div className="grid my-10 container mx-auto grid-cols-2 gap-4 md:grid-cols-4">
+    <div className="grid my-10 container mx-auto grid-cols-2 md:gap-4 md:grid-cols-4">
       <PhotoProvider>
         <div className="col-span-4 text-center font-bold text-5xl mb-5">
           <h1>Top Liked Images in Our Blogs</h1>

@@ -35,45 +35,51 @@ const BlogDetails = () => {
     fetchComments();
   }, [_id]);
 
-  //   handle the comment functionality
+  //   handle the comment button functionality
   const handleComment = (e) => {
     e.preventDefault();
-    // console.log(`aso keli`);
     const comment = e.target.comment.value;
-    const userUid = user?.uid;
-    const userName = user?.displayName;
-    const userEmail = user?.email;
-    const userPhoto = user?.photoURL;
-    const blogId = _id;
+    if (comment.length > 0) {
+      // console.log(`aso keli`);
 
-    const commentDetails = {
-      userUid,
-      comment,
-      userName,
-      userEmail,
-      userPhoto,
-      blogId,
-    };
+      const userUid = user?.uid;
+      const userName = user?.displayName;
+      const userEmail = user?.email;
+      const userPhoto = user?.photoURL;
+      const blogId = _id;
 
-    // sending comment data to the server
-    fetch(`https://blog-website-rho-henna.vercel.app/comments`, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(commentDetails),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        if (data.insertedId) {
-          toast.success("Comment Added");
-        }
-        // this.myFormRef.reset();
-      });
+      const commentDetails = {
+        userUid,
+        comment,
+        userName,
+        userEmail,
+        userPhoto,
+        blogId,
+      };
+
+      // sending comment data to the server
+      fetch(`https://blog-website-rho-henna.vercel.app/comments`, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(commentDetails),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          if (data.insertedId) {
+            toast.success("Comment Added");
+           e.target.comment.value = "";
+          }
+          // this.myFormRef.reset();
+        });
+    } else {
+      toast.error(`write something to add comment`);
+    }
   };
   return (
-    <div className="container mx-auto mt-4 mb-10">
+    <div className="container mx-auto px-3 mt-4 mb-10">
       {/*  */}
       <div className="text-left mb-4 border-b border-gray-800 pb-2 mb">
         <h1 className="font-bold  text-xl">category: {category}</h1>
@@ -81,8 +87,8 @@ const BlogDetails = () => {
       </div>
       {/*  */}
       <div className="flex flex-col gap-10">
-        <div className="w-2/4 mx-auto ">
-          <img src={image} className="rounded-md h-[500px] w-full " />
+        <div className="md:w-2/4 mx-auto ">
+          <img src={image} className="rounded-md h-auto md:h-[500px] w-full " />
         </div>
         <div className="w-3/4 mx-auto text-left">
           <p className="font-semibold">{shortDescription}</p>
@@ -93,7 +99,7 @@ const BlogDetails = () => {
       {authorEmail === user?.email && (
         <div>
           <Link to={`/updateBlog/${_id}`}>
-            <button className="btn btn-info w-full">Update</button>
+            <button className="btn mt-3 btn-info text-white font-bold text-lg w-full">Update</button>
           </Link>
         </div>
       )}

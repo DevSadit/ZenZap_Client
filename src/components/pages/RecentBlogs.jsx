@@ -27,7 +27,7 @@ const RecentBlogs = () => {
           initial={{ x: -1500 }}
           animate={{ x: 0 }}
           transition={{
-            duration: "3",
+            duration: "1",
             delay: "0.9",
           }}
           className="font-bold mb-3 text-5xl"
@@ -38,7 +38,7 @@ const RecentBlogs = () => {
           initial={{ x: 1500 }}
           animate={{ x: 0 }}
           transition={{
-            duration: "3",
+            duration: "1",
             delay: "1",
           }}
           className="mx-5 md:my-0 mt-3"

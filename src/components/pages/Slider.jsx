@@ -26,7 +26,11 @@ const Slider = () => {
           className="mySwiper"
         >
           <SwiperSlide>
-            <Hero img={bg1} txt={`Welcome to ZenZap`}></Hero>
+            <Hero
+              img={bg1}
+              txt={`Welcome to ZenZap`}
+              p={`Embark on a transformative journey with ZenZap, where innovation, entrepreneurship, and lifestyle blend seamlessly. Dive into our digital haven, where bytes of tech wisdom meet the art of business savvy and the essence of contemporary living. Unravel the mysteries of tomorrow's tech, decode the strategies of successful ventures, and unlock the secrets to a balanced, fulfilling life. From cutting-edge gadget reviews to in-depth market analyses and inspiring personal narratives, our curated content promises to inform, inspire, and invigorate. Join us in shaping the future, one click at a time, as we navigate the exhilarating realms of technology, business, and lifestyle`}
+            ></Hero>
           </SwiperSlide>
           <SwiperSlide>
             <Hero img={bg2} txt="Where Every Click Unfolds a Story"></Hero>

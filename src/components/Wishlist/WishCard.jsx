@@ -46,9 +46,9 @@ const WishCard = ({ wish, wishes, setWishes }) => {
     });
   };
   return (
-    <div className="mt-4 py-5 flex gap-x-4 flex-wrap md:flex-nowrap border-b">
-      <div className="md:w-60 max-h-60 md:mb-0 mb-6 flex-shrink-0 flex flex-col">
-        <img className="rounded-md" src={image} />
+    <div className="mt-4 py-5 flex gap-x-4 flex-wrap md:flex-nowrap gap-y-4 md:gap-y-4 border-b">
+      <div className="md:max-w-80  md:max-h-80 md:mb-0 mb-6 flex-shrink-0 flex flex-col">
+        <img className="max-w-96 rounded-md  md:w-full" src={image} />
       </div>
       <div className="md:flex-grow">
         <h2 className="text-2xl font-medium text-gray-900 title-font mb-2">

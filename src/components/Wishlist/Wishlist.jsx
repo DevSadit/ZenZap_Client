@@ -17,7 +17,7 @@ const Wishlist = () => {
   }, [user]);
   // console.log(wishes);
   return (
-    <div className="container text-gray-800 mx-auto">
+    <div className="container px-2 text-gray-800 mx-auto">
       <div className="text-left border-b border-gray-800 pb-4">
         <h1 className="font-bold text-2xl">Your Wishlist</h1>
         <h4 className="text-blue-600 font-semibold text-4xl ">
