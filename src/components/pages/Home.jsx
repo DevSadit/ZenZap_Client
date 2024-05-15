@@ -2,6 +2,7 @@ import AbouUs from "./AbouUs";
 import Faq from "./Faq";
 import Feedbacks from "./Feedbacks";
 import NewsLetter from "./NewsLetter";
+import View from "./View";
 import RecentBlogs from "./RecentBlogs";
 import Slider from "./Slider";
 import { motion, useScroll } from "framer-motion";
@@ -27,6 +28,7 @@ const Home = () => {
       <AbouUs></AbouUs>
       <Faq></Faq>
       <NewsLetter></NewsLetter>
+      <View></View>
     </>
   );
 };
