@@ -42,22 +42,18 @@ Make sure you have Node.js and npm installed on your machine. You can download N
 
 Open your browser and navigate to `http://localhost:3000` to see the project in action.
 
-## 🌟 Features
-
-- **Admin Dashboard:** Manage users, class schedules, trainers, and website analytics.
-- **Trainer Dashboard:** Create/update classes, track attendance, and communicate with members.
-- **Member Area:** View/book classes, check booking history, and interact with trainers.
-- **Real-time Booking:** Instant class bookings with calendar integration and reminders.
-- **Responsive Design:** Seamless experience across desktops, tablets, and smartphones.
-- **Communication Tools:** Built-in messaging and real-time notifications.
-- **Analytics & Reporting:** Insights on member activity, class attendance, and engagement.
-
-
 ## Overview
 
-The **Fitness Tracker** is a powerful client application built with React js, tailwind, firebase and many more.   to support a comprehensive fitness tracking platform. It features robust dashboards for admins, trainers, and members, enabling efficient management of users, classes, and schedules. The platform offers real-time class booking, calendar integration, automated reminders, and seamless communication tools. Designed with a responsive UI, it ensures a smooth user experience across all devices. Detailed analytics and reporting tools provide valuable insights to optimize performance and user engagement.
+**Zenzap** is a comprehensive tourism website designed to provide users with detailed information about numerous breathtaking tourist destinations across the globe. Each spot is meticulously categorized by country, making it easy for users to find and explore locations in their preferred region.
 
+### Features
 
+- **Extensive Database:** Discover a wide range of tourist spots from all around the world, each with detailed descriptions, images, and key information.
+- **Country-Based Categories:** Easily browse tourist spots categorized by country, simplifying your search for specific destinations.
+- **User Contributions:** Registered users can contribute to the site by adding details about their favorite tourist spots, sharing personal experiences, and enriching our community's travel knowledge.
+- **User Accounts:** To ensure a reliable and secure platform, users must sign up or log in to add new tourist spots or modify existing entries.
+
+- 
 -  ## NPM Packages which is used in this Project -
 - react icon
 - react tooltip
