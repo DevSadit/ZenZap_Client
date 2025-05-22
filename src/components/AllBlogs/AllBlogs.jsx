@@ -1,14 +1,13 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import RecBlog from "../pages/RecBlog";
-import { Form } from "react-router-dom";
-import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import { FaSearch } from "react-icons/fa";
 
 const AllBlogs = () => {
   const [blogs, setBlogs] = useState([]);
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(true);
-  // console.log(search);
+  
   useEffect(() => {
     axios
       .get(`https://blog-website-rho-henna.vercel.app/blogss`)
@@ -20,55 +19,74 @@ const AllBlogs = () => {
         console.error(err);
       });
   }, []);
+  
+  const filteredBlogs = blogs.filter((item) => {
+    return search.toLowerCase() === ""
+      ? item
+      : item.title.toLowerCase().includes(search.toLowerCase());
+  });
+
   return (
-    <div>
-      <div className="my-3 px-2 container mx-auto flex flex-col md:flex-row justify-between md:items-center border-b border-gray-800 pb-2">
-        <div className="text-left">
-          <h1 className="font-bold text-2xl">The Blogosphere</h1>
-          <h4 className="text-blue-600 font-semibold text-4xl ">
-            Our Complete Collection
-          </h4>
-        </div>
+    <div className="max-w-7xl mx-auto px-4 py-12">
+      <div className="bg-base-200 rounded-xl p-6 md:p-10 mb-12">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+          <div className="text-center md:text-left">
+            <h1 className="text-2xl md:text-3xl font-bold text-base-content">
+              The Blogosphere
+            </h1>
+            <h2 className="text-3xl md:text-4xl font-bold text-primary mt-2">
+              Our Complete Collection
+            </h2>
+          </div>
 
-        {/* inp box */}
-        <div className="relative mt-4 md:mt-0">
-          <span className="absolute inset-y-0 left-0 flex items-center pl-3">
-            <svg
-              className="w-5 h-5 text-gray-400"
-              viewBox="0 0 24 24"
-              fill="none"
-            >
-              <path
-                d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z"
-                stroke="currentColor"
-              ></path>
-            </svg>
-          </span>
-
-          <form onChange={(e) => setSearch(e.target.value)}>
-            <input
-              type="text"
-              className="w-full py-2 pl-10 pr-4 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-opacity-40 focus:ring-blue-300"
-              placeholder="Search By Title"
-            />
-          </form>
+          <div className="w-full md:w-auto">
+            <div className="relative">
+              <input
+                type="text"
+                className="input input-bordered w-full md:w-80 pl-10 pr-4 py-3"
+                placeholder="Search by title..."
+                onChange={(e) => setSearch(e.target.value)}
+              />
+              <FaSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-base-content/50" />
+            </div>
+          </div>
         </div>
       </div>
-      <div className=" grid md:grid-cols-2 lg:grid-cols-3 container mx-auto gap-28 my-12">
-        {loading ? (
-          <SkeletonTheme baseColor="#202020" highlightColor="#2563EB">
-            <Skeleton count={3} baseColor="#D1D5DB"></Skeleton>
-          </SkeletonTheme>
-        ) : (
-          blogs
-            .filter((item) => {
-              return search.toLowerCase() === ""
-                ? item
-                : item.title.toLowerCase().includes(search);
-            })
-            .map((blog) => <RecBlog key={blog._id} blog={blog}></RecBlog>)
-        )}
-      </div>
+
+      {loading ? (
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {[1, 2, 3, 4, 5, 6].map((item) => (
+            <div key={item} className="card bg-base-200 shadow-xl animate-pulse h-96">
+              <div className="h-48 bg-base-300 rounded-t-xl"></div>
+              <div className="card-body">
+                <div className="h-6 bg-base-300 rounded w-3/4 mb-4"></div>
+                <div className="h-4 bg-base-300 rounded w-full mb-2"></div>
+                <div className="h-4 bg-base-300 rounded w-5/6 mb-2"></div>
+                <div className="h-4 bg-base-300 rounded w-4/6 mb-6"></div>
+                <div className="flex justify-between">
+                  <div className="h-10 bg-base-300 rounded w-1/3"></div>
+                  <div className="h-10 bg-base-300 rounded w-1/3"></div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <>
+          {filteredBlogs.length === 0 ? (
+            <div className="text-center py-16">
+              <h3 className="text-2xl font-semibold mb-4">No blogs found matching your search</h3>
+              <p className="text-base-content/70">Try a different search term or browse all our blogs</p>
+            </div>
+          ) : (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {filteredBlogs.map((blog) => (
+                <RecBlog key={blog._id} blog={blog} />
+              ))}
+            </div>
+          )}
+        </>
+      )}
     </div>
   );
 };

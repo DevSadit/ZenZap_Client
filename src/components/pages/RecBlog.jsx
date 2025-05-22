@@ -1,7 +1,7 @@
-import { FaArrowRight, FaBookOpen } from "react-icons/fa6";
+import { FaArrowRight, FaBookOpen, FaRegBookmark } from "react-icons/fa6";
 import { motion } from "framer-motion";
-import { Link, Navigate } from "react-router-dom";
-import { useContext, useState } from "react";
+import { Link } from "react-router-dom";
+import { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import toast from "react-hot-toast";
 
@@ -35,9 +35,8 @@ const RecBlog = ({ blog }) => {
         authorName,
         currentUserEmail,
       };
-      console.log(wish);
 
-      // sendind blog data to the server
+      // sending blog data to the server
       fetch(`https://blog-website-rho-henna.vercel.app/wishlist`, {
         method: "POST",
         headers: {
@@ -47,63 +46,58 @@ const RecBlog = ({ blog }) => {
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
           if (data.insertedId) {
             toast.success("Added to Wishlist");
-            // Navigate("/");
           }
-          // this.myFormRef.reset();
         });
     } else {
       toast.error("Login to Add Blogs in Wishlist");
     }
   };
+
   return (
-    <div className="overflow-hidden h-[560px] bg-white mx-6 md:mx-0 rounded-lg shadow-lg dark:bg-gray-800">
-      <img
-        className="object-cover object-center w-full h-56"
-        src={image}
-        alt="avatar"
-      />
-
-      <div className="flex items-center px-6 py-3 bg-gray-900">
-        <FaBookOpen className="text-white" />
-
-        <h1 className="mx-3 text-lg font-semibold text-white">{title}</h1>
-      </div>
-
-      <div className="px-6 py-4">
-        <h1 className="text-xl font-semibold text-gray-800 dark:text-white">
+    <motion.div 
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      viewport={{ once: true }}
+      className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 h-full"
+    >
+      <figure className="relative overflow-hidden h-56">
+        <img
+          src={image}
+          alt={title}
+          className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+        />
+        <div className="absolute top-0 right-0 bg-primary text-white px-3 py-1 m-2 rounded-md text-sm font-medium">
+          {category}
+        </div>
+      </figure>
+      
+      <div className="card-body p-6">
+        <h2 className="card-title text-xl font-bold text-base-content line-clamp-2">
           {title}
-        </h1>
-
-        <p className="py-2 text-gray-700 dark:text-gray-400">
+        </h2>
+        
+        <p className="text-base-content/70 my-3 line-clamp-3">
           {shortDescription}
         </p>
-
-        <div className="flex items-center mt-4 text-gray-700 gap-x-3 dark:text-gray-200">
-          <FaArrowRight className="text-gray-800" />
-
-          <Link to={`/blogDetails/${_id}`}>
-            <button className="px-3 py-2 text-sm font-bold text-white uppercase transition-colors duration-300 transform bg-gray-800 rounded dark:bg-gray-700 hover:bg-gray-700 dark:hover:bg-gray-600 focus:outline-none focus:bg-gray-700 dark:focus:bg-gray-600">
-              Details
-            </button>
+        
+        <div className="card-actions justify-between mt-auto pt-4 border-t border-base-300">
+          <Link to={`/blogDetails/${_id}`} className="btn btn-primary btn-sm">
+            Read More <FaArrowRight size={14} />
           </Link>
-        </div>
-
-        <div className="flex items-center mt-4 text-gray-700 gap-x-3 dark:text-gray-200">
-          <FaArrowRight className="text-gray-800" />
+          
           <button
-            onClick={() => {
-              handleWishlist(_id);
-            }}
-            className="px-3 py-2 text-sm font-bold text-white uppercase transition-colors duration-300 transform bg-gray-800 rounded dark:bg-gray-700 hover:bg-gray-700 dark:hover:bg-gray-600 focus:outline-none focus:bg-gray-700 dark:focus:bg-gray-600"
+            onClick={() => handleWishlist(_id)}
+            className="btn btn-outline btn-sm"
+            aria-label="Add to wishlist"
           >
-            Add in Wishlist
+            <FaRegBookmark size={14} /> Wishlist
           </button>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
