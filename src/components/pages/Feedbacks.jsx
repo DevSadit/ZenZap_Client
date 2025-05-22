@@ -31,7 +31,7 @@ const Feedbacks = () => {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary-content">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold  text-blue-600">
             Feedback Spotlight
           </h2>
           <div className="w-24 h-1 bg-primary mx-auto my-4 rounded"></div>
