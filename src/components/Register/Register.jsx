@@ -1,10 +1,11 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../Provider/AuthProvider";
 import toast from "react-hot-toast";
 import regImg from "../../assets/register.jpg";
 const Register = () => {
+  const navigate = useNavigate();
   const { user, createUser, updateUserProfile, setUser, signInWithGoogle } =
     useContext(AuthContext);
   // const navigate = useNavigate();
@@ -25,10 +26,10 @@ const Register = () => {
       }
       // Proceed if password is valid
       const result = await createUser(email, password);
-      console.log(result);
+      // console.log(result);
       await updateUserProfile(name, photo);
       setUser({ ...user, photoURL: photo, displayName: name });
-      //   navigate("/");
+      
       Swal.fire({
         position: "center",
         icon: "success",
@@ -36,6 +37,7 @@ const Register = () => {
         showConfirmButton: false,
         timer: 1500,
       });
+        navigate("/");
     } 
     catch (err) {
       console.log(err);
