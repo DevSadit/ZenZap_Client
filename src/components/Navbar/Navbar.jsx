@@ -217,14 +217,6 @@ const Navbar = () => {
                 FAQ
               </Link>
               
-              {!user && (
-                <Link 
-                  to="/login" 
-                  className="block w-full mt-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white text-center px-4 py-2 rounded-lg text-sm font-medium hover:shadow-lg transition-all duration-200"
-                >
-                  Login
-                </Link>
-              )}
             </div>
           </div>
       </nav>

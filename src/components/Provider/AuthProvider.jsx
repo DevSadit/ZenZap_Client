@@ -14,7 +14,6 @@ import app from "../Firebase/Firebase";
 import { useNavigate } from "react-router-dom";
 
 export const AuthContext = createContext(null);
-const navigate = useNavigate();
 const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
 
@@ -35,31 +34,11 @@ const AuthProvider = ({ children }) => {
   };
 
   //   signin user with google
-  // const signInWithGoogle = () => {
-  //   setLoading(true);
-  //   return signInWithPopup(auth, googleProvider)
-  //   .then((result) => {
-  //     Swal.fire({
-  //       icon: 'success',
-  //       title: 'Signed in successfully!',
-  //       showConfirmButton: false,
-  //       timer: 1500
-  //     });
-
-  //     navigate('/');
-  //   })
-  //   .catch((error) => {
-  //     Swal.fire({
-  //       icon: 'error',
-  //       title: 'Sign in failed',
-  //       text: error.message
-  //     });
-  //   })
-  // };
-
   const signInWithGoogle = () => {
-    signInWithPopup(auth, googleProvider)
+    setLoading(true);
+    return signInWithPopup(auth, googleProvider)
   };
+
 
 // logout user
   const logOut = async () => {
