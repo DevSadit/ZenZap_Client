@@ -35,7 +35,7 @@ const AbouUs = () => {
   };
   
   return (
-    <div className="py-16 bg-gradient-to-b from-base-100 to-base-200">
+    <div className="py-16 bg-base-200">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

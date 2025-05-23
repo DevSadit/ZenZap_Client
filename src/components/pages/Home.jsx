@@ -10,7 +10,7 @@ import { motion, useScroll } from "framer-motion";
 const Home = () => {
   const { scrollYProgress } = useScroll();
   return (
-    <div className="min-h-screen bg-base-100">
+    <div className="min-h-screen bg-base-200">
       <motion.div
         style={{
           scaleX: scrollYProgress,
@@ -25,12 +25,10 @@ const Home = () => {
         }}
       ></motion.div>
       <Slider />
-      <div className="divider divider-primary max-w-6xl mx-auto my-8"></div>
+      <div className="divider divider-primary  max-w-6xl mx-auto my-8"></div>
       <RecentBlogs />
       <div className="divider divider-primary max-w-6xl mx-auto my-8"></div>
       <Feedbacks />
-      <div className="divider divider-primary max-w-6xl mx-auto my-8"></div>
-      <View />
       <div className="divider divider-primary max-w-6xl mx-auto my-8"></div>
       <AbouUs />
       <div className="divider divider-primary max-w-6xl mx-auto my-8"></div>

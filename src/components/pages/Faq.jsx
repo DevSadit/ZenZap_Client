@@ -10,7 +10,7 @@ const Faq = () => {
   };
 
   return (
-    <section className="py-16 px-4 bg-gradient-to-b from-base-100 to-base-200">
+    <section className="py-16 px-4 bg-base-200">
       <div className="container mx-auto max-w-7xl">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
